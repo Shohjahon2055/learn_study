@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}Ro‘yxatdan o‘tish - EduCenter{% endblock %}
+
+{% block hero %}{% endblock %}
+{% block features %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-form p {
+        margin-bottom: 1rem;
+    }
+
+    .auth-form label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .auth-form input,
+    .auth-form select,
+    .auth-form textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .auth-form input:focus,
+    .auth-form select:focus,
+    .auth-form textarea:focus {
+        outline: none;
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+    }
+
+    .auth-form ul.errorlist {
+        color: #dc3545;
+        font-size: 14px;
+        list-style: none;
+        padding: 0;
+        margin: 4px 0 0 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6 col-md-8">
+
+                <div class="feature-card">
+
+                    <div class="text-center mb-4">
+
+                        <i class="bi bi-mortarboard-fill text-primary"
+                           style="font-size: 45px;"></i>
+
+                        <h3 class="fw-bold mt-3">
+                            Ro‘yxatdan o‘tish
+                        </h3>
+
+                        <p class="text-secondary">
+                            EduCenter oilasiga qo‘shiling
+                        </p>
+
+                    </div>
+
+
+                    <!-- UMUMIY XATOLAR -->
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                <div>{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+
+                    <form method="POST" class="auth-form">
+
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <button type="submit"
+                                class="btn btn-primary btn-lg w-100 mt-2">
+
+                            Ro‘yxatdan o‘tish
+                            <i class="bi bi-arrow-right"></i>
+
+                        </button>
+
+                    </form>
+
+
+                    <hr class="my-4">
+
+
+                    <p class="text-center text-secondary mb-0">
+
+                        Hisobingiz bormi?
+                        <a href="{% url 'login' %}"
+                           class="text-primary fw-semibold text-decoration-none">
+                            Kirish
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
