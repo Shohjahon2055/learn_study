@@ -1,0 +1,545 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Kurslar{% endblock %}
+
+{% block content %}
+
+<div class="courses-wrap">
+
+    <div class="courses-header">
+
+        <div>
+            <div class="page-label">EDUCENTER</div>
+
+            <h1>Kurslar</h1>
+
+            <p>
+                Mavjud kurslarni ko‘ring va batafsil ma’lumot oling.
+            </p>
+        </div>
+
+        <a href="{% url 'create-courses' %}" class="btn-add">
+            <span>+</span>
+            Yangi kurs
+        </a>
+
+    </div>
+
+
+    <div class="courses-board">
+
+        {% for course in courses %}
+
+        <div class="course-card">
+
+            <!-- Kurs detail sahifasiga olib boradi -->
+            <a
+                href="#"
+                class="course-link"
+            >
+
+                <div class="course-top">
+
+                    <div class="course-icon">
+                        📚
+                    </div>
+
+                    <span class="course-badge">
+                        KURS
+                    </span>
+
+                </div>
+
+
+                <h2 class="course-title">
+                    {{ course.title }}
+                </h2>
+
+
+                {% if course.description %}
+                <p class="course-description">
+                    {{ course.description|truncatewords:15 }}
+                </p>
+                {% endif %}
+
+
+                <div class="course-info">
+
+                    <div class="info-item">
+
+                        <span class="info-icon">⏱</span>
+
+                        <div>
+                            <small>Davomiyligi</small>
+
+                            <strong>
+                                {{ course.duration_months }} oy
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-link">
+                    Batafsil ko‘rish
+                    <span>→</span>
+                </div>
+
+            </a>
+
+
+            <!-- Action buttons -->
+            <div class="card-actions">
+
+                <a
+                    href="{% url 'update-courses' course.pk %}"
+                    class="btn-edit"
+                >
+                    Tahrirlash
+                </a>
+
+                <a
+                    href="{% url 'delete-courses' course.pk %}"
+                    class="btn-delete"
+                >
+                    O‘chirish
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                📚
+            </div>
+
+            <h3>Hozircha kurslar yo‘q</h3>
+
+            <p>
+                Birinchi kursingizni yaratishdan boshlang.
+            </p>
+
+            <a
+                href="{% url 'create-courses' %}"
+                class="btn-add"
+            >
+                + Yangi kurs yaratish
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<style>
+
+.courses-wrap {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 35px 24px 50px;
+}
+
+
+/* HEADER */
+
+.courses-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.page-label {
+    color: #4a6cf7;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+}
+
+.courses-header h1 {
+    margin: 0;
+    color: #12213F;
+    font-size: 32px;
+    font-weight: 750;
+}
+
+.courses-header p {
+    margin: 7px 0 0;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* ADD BUTTON */
+
+.btn-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    background: #4a6cf7;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.btn-add span {
+    font-size: 20px;
+    line-height: 14px;
+}
+
+.btn-add:hover {
+    background: #3a5ce0;
+    color: white;
+    transform: translateY(-1px);
+}
+
+
+/* COURSE GRID */
+
+.courses-board {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* COURSE CARD */
+
+.course-card {
+    background: white;
+
+    border: 1px solid #e7e9ef;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.09);
+}
+
+
+/* DETAIL LINK */
+
+.course-link {
+    display: block;
+
+    padding: 20px;
+
+    text-decoration: none;
+    color: inherit;
+
+    flex: 1;
+}
+
+
+/* TOP */
+
+.course-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.course-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef1ff;
+
+    border-radius: 12px;
+
+    font-size: 23px;
+}
+
+.course-badge {
+    background: #eef1ff;
+
+    color: #4a6cf7;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* TITLE */
+
+.course-title {
+    margin: 0 0 9px;
+
+    color: #172033;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+
+/* DESCRIPTION */
+
+.course-description {
+    color: #747985;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin: 0 0 18px;
+}
+
+
+/* INFO */
+
+.course-info {
+    border-top: 1px solid #f0f1f4;
+
+    padding-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f5f6f8;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+}
+
+.info-item small {
+    display: block;
+
+    color: #999;
+
+    font-size: 11px;
+
+    margin-bottom: 2px;
+}
+
+.info-item strong {
+    display: block;
+
+    color: #333;
+
+    font-size: 13px;
+}
+
+
+/* DETAIL */
+
+.detail-link {
+    margin-top: 18px;
+
+    color: #4a6cf7;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.detail-link span {
+    font-size: 18px;
+
+    transition: 0.2s;
+}
+
+.course-card:hover .detail-link span {
+    transform: translateX(4px);
+}
+
+
+/* ACTIONS */
+
+.card-actions {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 12px 20px 16px;
+
+    border-top: 1px solid #f0f1f4;
+}
+
+.card-actions a {
+    flex: 1;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+/* EDIT */
+
+.btn-edit {
+    background: #eef1ff;
+    color: #4a6cf7;
+}
+
+.btn-edit:hover {
+    background: #dfe4ff;
+    color: #3858db;
+}
+
+
+/* DELETE */
+
+.btn-delete {
+    background: #fff0f0;
+    color: #d93025;
+}
+
+.btn-delete:hover {
+    background: #ffe0e0;
+    color: #c5221f;
+}
+
+
+/* EMPTY */
+
+.empty-state {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background: white;
+
+    border: 1px dashed #dfe2e8;
+
+    border-radius: 16px;
+}
+
+.empty-icon {
+    font-size: 42px;
+
+    margin-bottom: 12px;
+}
+
+.empty-state h3 {
+    margin: 0 0 7px;
+
+    color: #333;
+
+    font-size: 20px;
+}
+
+.empty-state p {
+    color: #888;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .courses-wrap {
+        padding: 25px 15px;
+    }
+
+    .courses-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .courses-header h1 {
+        font-size: 27px;
+    }
+
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .courses-board {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+{% endblock %}
+

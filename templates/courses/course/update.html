@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+
+{% block title %}Kursni tahrirlash{% endblock %}
+
+{% block content %}
+
+<div class="update-container">
+
+    <div class="update-card">
+
+        <div class="update-header">
+
+            <div class="update-icon">
+                ✎
+            </div>
+
+            <div>
+                <h1>Kursni tahrirlash</h1>
+
+                <p>
+                    {{ course.title }} kursi ma'lumotlarini o'zgartiring
+                </p>
+            </div>
+
+        </div>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-area">
+
+                {{ form.as_p }}
+
+            </div>
+
+
+            <div class="buttons">
+
+                <a
+                    href="{% url 'list-courses' %}"
+                    class="btn-cancel"
+                >
+                    Bekor qilish
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn-save"
+                >
+                    O'zgarishlarni saqlash
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.update-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.update-card {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    border: 1px solid #e7e9ef;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+
+/* HEADER */
+
+.update-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.update-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef1ff;
+    color: #4a6cf7;
+    border-radius: 13px;
+    font-size: 25px;
+}
+
+.update-header h1 {
+    margin: 0 0 5px;
+    color: #172033;
+    font-size: 25px;
+}
+
+.update-header p {
+    margin: 0;
+    color: #888;
+    font-size: 13px;
+}
+
+
+/* FORM */
+
+.form-area p {
+    margin-bottom: 20px;
+}
+
+.form-area label {
+    display: block;
+    margin-bottom: 7px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-area input,
+.form-area textarea,
+.form-area select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid #dfe2e8;
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+    background: #fff;
+    transition: 0.2s;
+}
+
+.form-area textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-area input:focus,
+.form-area textarea:focus,
+.form-area select:focus {
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.form-area ul {
+    color: #d93025;
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 11px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cancel {
+    background: #f1f3f5;
+    color: #444;
+}
+
+.btn-cancel:hover {
+    background: #e2e5e8;
+    color: #222;
+}
+
+.btn-save {
+    border: none;
+    background: #4a6cf7;
+    color: white;
+}
+
+.btn-save:hover {
+    background: #3a5ce0;
+    transform: translateY(-1px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .update-container {
+        padding: 25px 15px;
+    }
+
+    .update-card {
+        padding: 25px 20px;
+    }
+
+    .update-header {
+        align-items: flex-start;
+    }
+
+    .update-header h1 {
+        font-size: 21px;
+    }
+
+    .buttons {
+        flex-direction: column-reverse;
+    }
+
+    .btn-cancel,
+    .btn-save {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+}
+
+</style>
+
+{% endblock %}

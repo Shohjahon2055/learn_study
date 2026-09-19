@@ -1,0 +1,203 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Kursni o‘chirish{% endblock %}
+
+{% block content %}
+
+<div class="delete-wrap">
+
+    <div class="delete-card">
+
+        <div class="delete-icon">
+            !
+        </div>
+
+        <h1>Kursni o‘chirish</h1>
+
+        <p class="question">
+            Siz rostdan ham
+            <strong>{{ course.title }}</strong>
+            kursini o‘chirmoqchimisiz?
+        </p>
+
+        <p class="warning">
+            Bu amalni bekor qilib bo‘lmaydi.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="actions">
+
+                <a
+                    href="{% url 'list-courses' %}"
+                    class="btn-cancel"
+                >
+                    Bekor qilish
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn-delete"
+                >
+                    Ha, o‘chirish
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<style>
+
+.delete-wrap {
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+}
+
+.delete-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: white;
+
+    border: 1px solid #eee;
+
+    border-radius: 18px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.delete-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    color: #d93025;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.delete-card h1 {
+    margin: 0 0 15px;
+
+    color: #172033;
+
+    font-size: 25px;
+}
+
+.question {
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-bottom: 8px;
+}
+
+.question strong {
+    color: #172033;
+}
+
+.warning {
+    color: #d93025;
+
+    font-size: 13px;
+
+    margin-bottom: 28px;
+}
+
+.actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.actions a,
+.actions button {
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-cancel {
+    background: #f1f3f5;
+    color: #444;
+}
+
+.btn-cancel:hover {
+    background: #e5e7eb;
+    color: #222;
+}
+
+.btn-delete {
+    background: #d93025;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c5221f;
+}
+
+@media (max-width: 500px) {
+
+    .delete-card {
+        padding: 30px 20px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions a,
+    .actions button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+</style>
+
+{% endblock %}
+
