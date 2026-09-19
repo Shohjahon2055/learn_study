@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Create Room</h1>
+<form method="post">
+    {% csrf_token %}
+    <h3>Siz rostanham {{ room.name }} shu xonani ochirmoqchimis</h3>
+    <button type="submit">Ha</button>
+</form>
+{% endblock %}
