@@ -44,20 +44,19 @@
 
 
         * {
-
-            box-sizing: border-box;
-
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
 
         body {
 
             font-family:
-                'Inter',
-                'Segoe UI',
-                system-ui,
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
                 sans-serif;
 
             background: var(--paper);
@@ -69,13 +68,14 @@
 
 
         a {
-
             text-decoration: none;
+            color: inherit;
         }
 
 
-
-        /* ================= SIDEBAR ================= */
+        /* =========================================
+           SIDEBAR
+        ========================================= */
 
         .sidebar {
 
@@ -89,89 +89,109 @@
 
             background: var(--navy);
 
-            color: #DCE3F0;
+            color: white;
 
             display: flex;
 
             flex-direction: column;
 
-            padding: 28px 18px;
+            z-index: 1000;
+        }
+
+
+        .brand {
+
+            height: 90px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 22px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+
+        .brand-mark {
+
+            width: 42px;
+            height: 42px;
+
+            background: var(--gold);
+
+            border-radius: 9px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            margin-right: 11px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(216,154,62,.2);
+        }
+
+
+        .brand-text strong {
+
+            display: block;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+
+        .brand-text span {
+
+            display: block;
+
+            font-size: 10px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            margin-top: 2px;
+        }
+
+
+        /* =========================================
+           SIDEBAR NAV
+        ========================================= */
+
+        .sidebar-nav {
+
+            padding: 18px 12px;
+
+            flex: 1;
 
             overflow-y: auto;
         }
 
 
+        .nav-label {
 
-        /* ================= BRAND ================= */
+            color:
+                rgba(255,255,255,.4);
 
-        .brand {
+            font-size: 10px;
 
-            display: flex;
+            font-weight: 700;
 
-            align-items: center;
+            letter-spacing: 1px;
 
-            gap: 10px;
+            padding: 0 12px;
 
-            padding: 0 6px 28px 6px;
-
-            color: white;
-        }
-
-
-        .brand .mark {
-
-            width: 34px;
-            height: 34px;
-
-            border-radius: 9px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--gold),
-                    #B97A2A
-                );
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            font-weight: 800;
-
-            font-size: 16px;
-
-            color: var(--navy);
-        }
-
-
-        .brand .name {
-
-            font-size: 17px;
-
-            font-weight: 800;
-        }
-
-
-        .brand .sub {
-
-            font-size: 10.5px;
-
-            color: #8FA0C4;
-        }
-
-
-
-        /* ================= NAVIGATION ================= */
-
-        nav {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 2px;
+            margin: 18px 0 8px;
         }
 
 
@@ -181,126 +201,132 @@
 
             align-items: center;
 
-            gap: 12px;
+            gap: 11px;
 
             padding: 10px 12px;
 
-            border-radius: 8px;
+            margin-bottom: 3px;
 
-            font-size: 14px;
+            border-radius: 7px;
 
-            font-weight: 500;
+            color:
+                rgba(255,255,255,.72);
 
-            color: #B7C2DC;
+            font-size: 13px;
 
-            transition: .15s;
+            font-weight: 600;
+
+            transition: .2s;
         }
 
 
         .nav-item:hover {
 
-            background: var(--navy-soft);
+            background:
+                rgba(255,255,255,.08);
 
             color: white;
+
+            transform: translateX(2px);
         }
 
 
         .nav-item.active {
 
-            background: var(--gold);
-
-            color: var(--navy);
-
-            font-weight: 700;
-        }
-
-
-        .nav-icon {
-
-            width: 18px;
-
-            text-align: center;
-        }
-
-
-        .nav-group-label {
-
-            font-size: 10.5px;
-
-            color: #6E7DA0;
-
-            font-weight: 700;
-
-            letter-spacing: .4px;
-
-            margin:
-                18px 12px 6px;
-        }
-
-
-
-        /* ================= SIDEBAR FOOT ================= */
-
-        .sidebar-foot {
-
-            margin-top: auto;
-
-            background: var(--navy-soft);
-
-            border-radius: var(--radius);
-
-            padding: 16px;
-        }
-
-
-        .sidebar-foot p {
-
-            font-size: 13px;
-
-            font-weight: 700;
+            background:
+                rgba(255,255,255,.12);
 
             color: white;
         }
 
 
-        .sidebar-foot span {
+        .nav-icon {
 
-            display: block;
+            width: 20px;
+
+            text-align: center;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           SUBSCRIPTION
+        ========================================= */
+
+        .sidebar-footer {
+
+            padding: 15px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.08);
+        }
+
+
+        .subscription {
+
+            background:
+                rgba(255,255,255,.07);
+
+            border-radius: 8px;
+
+            padding: 13px;
+        }
+
+
+        .subscription-title {
+
+            font-size: 11px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            margin-bottom: 4px;
+        }
+
+
+        .subscription-text {
 
             font-size: 12px;
 
-            color: #E39B7A;
+            font-weight: 700;
 
-            margin-top: 2px;
+            margin-bottom: 10px;
         }
 
 
-        .sidebar-foot button {
+        .subscription-btn {
 
-            margin-top: 12px;
+            display: block;
 
-            width: 100%;
+            text-align: center;
 
             background: var(--gold);
 
-            color: var(--navy);
+            color: white;
 
-            border: none;
+            padding: 8px;
 
-            border-radius: 7px;
+            border-radius: 6px;
 
-            padding: 9px 0;
+            font-size: 11px;
 
             font-weight: 700;
 
-            font-size: 13px;
-
-            cursor: pointer;
+            transition: .2s;
         }
 
 
+        .subscription-btn:hover {
 
-        /* ================= MAIN ================= */
+            background: #c9882f;
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
 
         .main {
 
@@ -314,52 +340,65 @@
         }
 
 
-
-        /* ================= TOPBAR ================= */
+        /* =========================================
+           TOPBAR
+        ========================================= */
 
         .topbar {
 
             height: 73px;
 
+            background: white;
+
+            border-bottom:
+                1px solid
+                var(--line);
+
             display: flex;
 
             align-items: center;
 
-            gap: 16px;
+            padding: 0 32px;
 
-            padding: 18px 32px;
+            position: sticky;
 
-            border-bottom:
-                1px solid var(--line);
+            top: 0;
 
-            background: var(--card);
+            z-index: 100;
         }
 
 
-        .search {
+        .search-box {
 
-            flex: 1;
+            width: 280px;
 
-            max-width: 380px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
+            height: 38px;
 
             background: var(--paper);
 
             border:
-                1px solid var(--line);
+                1px solid
+                var(--line);
 
-            border-radius: 8px;
+            border-radius: 7px;
 
-            padding: 9px 13px;
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 12px;
 
             color: var(--ink-soft);
 
-            font-size: 13.5px;
+            font-size: 12px;
+        }
+
+
+        .search-box span {
+
+            margin-right: 8px;
+
+            font-size: 15px;
         }
 
 
@@ -369,73 +408,112 @@
         }
 
 
-        .pill {
+        .topbar-pill {
+
+            padding: 7px 11px;
+
+            background: var(--paper);
 
             border:
-                1px solid var(--line);
+                1px solid
+                var(--line);
 
-            border-radius: 8px;
+            border-radius: 7px;
 
-            padding: 8px 12px;
+            font-size: 11px;
 
-            font-size: 13px;
+            margin-left: 8px;
 
-            font-weight: 600;
+            transition: .2s;
+        }
 
-            color: var(--ink);
 
-            background: white;
+        .topbar-pill:hover {
+
+            background: var(--gold-soft);
+
+            color: var(--navy);
         }
 
 
         .avatar {
 
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
 
-            border-radius: 8px;
+            margin-left: 12px;
+
+            border-radius: 50%;
 
             background: var(--navy);
 
             color: white;
 
-            font-weight: 700;
-
-            font-size: 13px;
-
             display: flex;
 
             align-items: center;
-
             justify-content: center;
+
+            font-size: 12px;
+
+            font-weight: 800;
         }
 
 
-
-        /* ================= CONTENT ================= */
+        /* =========================================
+           CONTENT
+        ========================================= */
 
         .content {
 
-            padding:
-                28px 32px 40px;
+            padding: 28px 32px 40px;
+
+            flex: 1;
         }
 
 
-
-        /* ================= HERO ================= */
+        /* =========================================
+           HERO
+        ========================================= */
 
         .hero {
 
             background: white;
 
-            padding: 45px;
+            border:
+                1px solid
+                var(--line);
 
             border-radius: var(--radius);
 
-            border:
-                1px solid var(--line);
+            padding: 45px;
 
-            margin-bottom: 24px;
+            margin-bottom: 30px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            background:
+                var(--gold-soft);
+
+            border-radius: 50%;
+
+            right: -80px;
+            top: -100px;
+
+            opacity: .35;
         }
 
 
@@ -444,11 +522,15 @@
             display: grid;
 
             grid-template-columns:
-                1fr 1fr;
+                1.1fr .9fr;
 
-            gap: 40px;
+            gap: 45px;
 
             align-items: center;
+
+            position: relative;
+
+            z-index: 2;
         }
 
 
@@ -456,27 +538,32 @@
 
             display: inline-block;
 
-            background: var(--gold-soft);
+            background:
+                var(--gold-soft);
 
             color: #9A6A1D;
 
             padding: 7px 12px;
 
-            border-radius: 7px;
+            border-radius: 20px;
 
-            font-size: 12px;
+            font-size: 11px;
 
-            font-weight: 700;
+            font-weight: 800;
 
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
 
         .hero h1 {
 
-            font-size: 40px;
+            font-size: 42px;
 
             line-height: 1.15;
+
+            font-weight: 900;
+
+            color: var(--navy);
 
             margin-bottom: 18px;
         }
@@ -492,9 +579,13 @@
 
             color: var(--ink-soft);
 
+            font-size: 15px;
+
             line-height: 1.7;
 
-            margin-bottom: 24px;
+            max-width: 540px;
+
+            margin-bottom: 25px;
         }
 
 
@@ -503,45 +594,60 @@
             display: flex;
 
             gap: 10px;
+
+            flex-wrap: wrap;
         }
 
 
         .btn-main {
 
+            display: inline-block;
+
             background: var(--navy);
 
             color: white;
 
-            padding: 11px 18px;
+            padding: 12px 20px;
 
-            border-radius: 8px;
+            border-radius: 7px;
 
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 700;
+
+            transition: .2s;
         }
 
 
         .btn-main:hover {
 
             background: var(--navy-soft);
+
+            transform: translateY(-1px);
         }
 
 
         .btn-outline {
 
+            display: inline-block;
+
+            background: white;
+
+            color: var(--navy);
+
             border:
-                1px solid var(--line);
+                1px solid
+                var(--line);
 
-            color: var(--ink);
+            padding: 12px 20px;
 
-            padding: 11px 18px;
+            border-radius: 7px;
 
-            border-radius: 8px;
-
-            font-size: 13px;
+            font-size: 12px;
 
             font-weight: 700;
+
+            transition: .2s;
         }
 
 
@@ -555,16 +661,23 @@
 
             width: 100%;
 
-            height: 310px;
+            height: 300px;
 
             object-fit: cover;
 
             border-radius: 12px;
+
+            display: block;
+
+            box-shadow:
+                0 15px 35px
+                rgba(18,33,63,.14);
         }
 
 
-
-        /* ================= FEATURES ================= */
+        /* =========================================
+           SECTION
+        ========================================= */
 
         .section-title {
 
@@ -574,21 +687,27 @@
 
         .section-title h2 {
 
-            font-size: 19px;
+            font-size: 24px;
+
+            color: var(--navy);
 
             font-weight: 800;
+
+            margin-bottom: 5px;
         }
 
 
         .section-title p {
-
-            margin-top: 5px;
 
             color: var(--ink-soft);
 
             font-size: 13px;
         }
 
+
+        /* =========================================
+           FEATURES
+        ========================================= */
 
         .feature-grid {
 
@@ -599,7 +718,7 @@
 
             gap: 14px;
 
-            margin-bottom: 24px;
+            margin-bottom: 30px;
         }
 
 
@@ -608,32 +727,43 @@
             background: white;
 
             border:
-                1px solid var(--line);
+                1px solid
+                var(--line);
 
             border-radius: var(--radius);
 
-            padding: 22px;
+            padding: 24px;
+
+            transition: .2s;
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(18,33,63,.06);
         }
 
 
         .feature-icon {
 
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
 
-            border-radius: 8px;
+            background:
+                var(--gold-soft);
 
-            background: var(--gold-soft);
-
-            color: #9A6A1D;
+            border-radius: 9px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
-            font-size: 18px;
+            font-size: 22px;
 
             margin-bottom: 15px;
         }
@@ -643,63 +773,340 @@
 
             font-size: 15px;
 
+            font-weight: 800;
+
+            color: var(--navy);
+
             margin-bottom: 8px;
         }
 
 
         .feature-card p {
 
-            font-size: 13px;
+            color: var(--ink-soft);
+
+            font-size: 12px;
 
             line-height: 1.6;
-
-            color: var(--ink-soft);
         }
 
 
+        /* =========================================
+           STATISTICS
+        ========================================= */
 
-        /* ================= FOOTER ================= */
+        .stats-section {
 
-        footer {
+            display: grid;
 
-            margin-top: auto;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border:
+                1px solid
+                var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 22px;
+
+            text-align: center;
+
+            transition: .2s;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-3px);
+        }
+
+
+        .stat-card strong {
+
+            display: block;
+
+            font-size: 25px;
+
+            color: var(--navy);
+
+            font-weight: 900;
+
+            margin-bottom: 5px;
+        }
+
+
+        .stat-card span {
+
+            color: var(--ink-soft);
+
+            font-size: 11px;
+        }
+
+
+        /* =========================================
+           ROOM
+        ========================================= */
+
+        .page-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 24px;
+
+            gap: 20px;
+        }
+
+
+        .page-header h1 {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            color: var(--navy);
+        }
+
+
+        .page-header p {
+
+            margin-top: 6px;
+
+            color: var(--ink-soft);
+
+            font-size: 13px;
+        }
+
+
+        .btn-add {
 
             background: var(--navy);
 
             color: white;
 
-            padding: 30px 32px;
+            padding: 11px 18px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            font-weight: 700;
         }
 
 
-        .footer-inner {
+        .btn-add:hover {
+
+            background: var(--navy-soft);
+        }
+
+
+        .kanban-board {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .kanban-card {
+
+            background: white;
+
+            border:
+                1px solid
+                var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 20px;
+        }
+
+
+        .card-top {
 
             display: flex;
 
+            align-items: center;
+
             justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .room-name {
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            color: var(--navy);
+        }
+
+
+        .room-capacity {
+
+            background:
+                var(--gold-soft);
+
+            color: #9A6A1D;
+
+            padding: 6px 10px;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        .card-actions {
+
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .btn-edit,
+        .btn-delete {
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .btn-edit {
+
+            background: #E8F2EF;
+
+            color: var(--teal);
+        }
+
+
+        .btn-delete {
+
+            background: #FBE9E6;
+
+            color: var(--red);
+        }
+
+
+        .empty-state {
+
+            background: white;
+
+            border:
+                1px solid
+                var(--line);
+
+            border-radius: var(--radius);
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: var(--ink-soft);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+
+            background: var(--navy);
+
+            color: white;
+
+            margin-top: 30px;
+
+            padding: 35px 32px;
+        }
+
+
+        .footer-content {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
 
             gap: 30px;
         }
 
 
-        footer h4 {
+        .footer-brand {
 
-            font-size: 16px;
+            font-size: 18px;
 
-            margin-bottom: 8px;
+            font-weight: 800;
+
+            margin-bottom: 10px;
         }
 
 
-        footer p {
+        .footer p {
 
-            color: #8FA0C4;
+            color:
+                rgba(255,255,255,.6);
 
             font-size: 12px;
+
+            line-height: 1.6;
         }
 
 
+        .footer h4 {
 
-        /* ================= RESPONSIVE ================= */
+            font-size: 13px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .footer-contact {
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size: 12px;
+
+            line-height: 2;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
 
         @media (max-width: 1000px) {
 
@@ -723,9 +1130,23 @@
 
             .feature-grid {
 
-                grid-template-columns:
-                    1fr 1fr;
+                grid-template-columns: 1fr;
             }
+
+
+            .stats-section {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .kanban-board {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
         }
 
 
@@ -738,8 +1159,6 @@
                 width: 100%;
 
                 height: auto;
-
-                padding: 18px;
             }
 
 
@@ -749,27 +1168,32 @@
             }
 
 
-            body {
+            .topbar {
 
-                display: block;
+                padding: 0 15px;
+
+                flex-wrap: wrap;
+
+                height: auto;
+
+                min-height: 73px;
+
+                padding-top: 10px;
+
+                padding-bottom: 10px;
             }
 
 
-            .topbar {
+            .search-box {
 
-                padding: 15px;
+                width: 180px;
             }
 
 
             .content {
 
-                padding: 18px;
-            }
-
-
-            .search {
-
-                display: none;
+                padding:
+                    20px 15px 30px;
             }
 
 
@@ -785,73 +1209,84 @@
             }
 
 
-            .feature-grid {
+            .hero-image {
+
+                height: 240px;
+            }
+
+
+            .stats-section {
 
                 grid-template-columns: 1fr;
             }
 
 
-            .footer-inner {
+            .kanban-board {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .page-header {
+
+                align-items: flex-start;
 
                 flex-direction: column;
             }
+
+
+            .footer-content {
+
+                grid-template-columns: 1fr;
+            }
+
         }
 
     </style>
 
-
-    {% block extra_css %}
-    {% endblock %}
-
 </head>
-
 
 
 <body>
 
 
-
-<!-- ================= SIDEBAR ================= -->
+<!-- =========================================
+     SIDEBAR
+========================================= -->
 
 <aside class="sidebar">
 
 
-    <!-- BRAND -->
-
     <div class="brand">
 
-        <div class="mark">
+        <div class="brand-mark">
             EC
         </div>
 
-        <div>
 
-            <div class="name">
+        <div class="brand-text">
+
+            <strong>
                 EduCenter
-            </div>
+            </strong>
 
-            <div class="sub">
+            <span>
                 O'quv markazi paneli
-            </div>
+            </span>
 
         </div>
 
     </div>
 
 
+    <nav class="sidebar-nav">
 
-    <!-- NAVIGATION -->
-
-    <nav>
-
-
-        <!-- ASOSIY -->
 
         <a href="{% url 'home' %}"
            class="nav-item">
 
             <span class="nav-icon">
-                ⌂
+                🏠
             </span>
 
             Asosiy
@@ -859,14 +1294,11 @@
         </a>
 
 
-
-        <!-- KURSLAR -->
-
         <a href="{% url 'list-courses' %}"
            class="nav-item">
 
             <span class="nav-icon">
-                ▣
+                📚
             </span>
 
             Kurslar
@@ -874,14 +1306,11 @@
         </a>
 
 
-
-        <!-- ROOM -->
-
         <a href="{% url 'list-rooms' %}"
            class="nav-item">
 
             <span class="nav-icon">
-                ▤
+                🚪
             </span>
 
             Room
@@ -889,14 +1318,11 @@
         </a>
 
 
-
-        <!-- GURUHLAR -->
-
-        <a href="#"
+        <a href="{% url 'list-groups' %}"
            class="nav-item">
 
             <span class="nav-icon">
-                ▦
+                👥
             </span>
 
             Guruhlar
@@ -904,14 +1330,11 @@
         </a>
 
 
-
-        <!-- O'QITUVCHILAR -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ♙
+                👨‍🏫
             </span>
 
             O'qituvchilar
@@ -919,14 +1342,11 @@
         </a>
 
 
-
-        <!-- O'QUVCHILAR -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ♙
+                🎓
             </span>
 
             O'quvchilar
@@ -934,14 +1354,11 @@
         </a>
 
 
-
-        <!-- TALABALAR -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ▦
+                🧑‍🎓
             </span>
 
             Talabalar
@@ -949,14 +1366,11 @@
         </a>
 
 
-
-        <!-- SOVG'ALAR -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ◇
+                🎁
             </span>
 
             Sovg'alar
@@ -964,14 +1378,11 @@
         </a>
 
 
-
-        <!-- MOLIYA -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ▣
+                💰
             </span>
 
             Moliya
@@ -979,14 +1390,11 @@
         </a>
 
 
-
-        <!-- HISOBOTLAR -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ▤
+                📊
             </span>
 
             Hisobotlar
@@ -994,14 +1402,11 @@
         </a>
 
 
-
-        <!-- BOSHQARISH -->
-
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ⚙
+                ⚙️
             </span>
 
             Boshqarish
@@ -1009,47 +1414,48 @@
         </a>
 
 
-
-        <!-- YORDAM -->
-
-        <div class="nav-group-label">
+        <div class="nav-label">
             YORDAM
         </div>
 
-
-
-        <!-- SUPPORT -->
 
         <a href="#"
            class="nav-item">
 
             <span class="nav-icon">
-                ➤
+                💬
             </span>
 
             EduCenter support
 
         </a>
 
+
     </nav>
 
 
+    <div class="sidebar-footer">
 
-    <!-- SIDEBAR FOOT -->
+        <div class="subscription">
 
-    <div class="sidebar-foot">
+            <div class="subscription-title">
+                Obuna
+            </div>
 
-        <p>
-            Obuna
-        </p>
 
-        <span>
-            Obunangiz tugagan
-        </span>
+            <div class="subscription-text">
+                Obunangiz tugagan
+            </div>
 
-        <button>
-            Obunani yangilash
-        </button>
+
+            <a href="#"
+               class="subscription-btn">
+
+                Obunani yangilash
+
+            </a>
+
+        </div>
 
     </div>
 
@@ -1058,24 +1464,25 @@
 
 
 
-<!-- ================= MAIN ================= -->
+<!-- =========================================
+     MAIN
+========================================= -->
 
-<div class="main">
+<main class="main">
 
 
-
-    <!-- ================= TOPBAR ================= -->
+    <!-- TOPBAR -->
 
     <header class="topbar">
 
 
-        <div class="search">
-
-            🔍
+        <div class="search-box">
 
             <span>
-                Qidirish...
+                🔍
             </span>
+
+            Qidirish...
 
         </div>
 
@@ -1083,66 +1490,98 @@
         <div class="topbar-spacer"></div>
 
 
-        <div class="pill">
-
+        <div class="topbar-pill">
             EduCenter
-
         </div>
 
 
-        <div class="pill">
-
+        <div class="topbar-pill">
             O'zbekcha
-
         </div>
 
 
-        <div class="avatar">
+        {% if user.is_authenticated %}
 
-            {% if user.is_authenticated %}
+            <div class="topbar-pill">
+                {{ user.username }}
+            </div>
+
+
+            <a href="{% url 'logout' %}"
+               class="topbar-pill">
+
+                Chiqish
+
+            </a>
+
+
+            <div class="avatar">
 
                 {{ user.username|first|upper }}
 
-            {% else %}
+            </div>
+
+        {% else %}
+
+            <a href="{% url 'login' %}"
+               class="topbar-pill">
+
+                Kirish
+
+            </a>
+
+
+            <a href="{% url 'register' %}"
+               class="topbar-pill">
+
+                Ro'yxatdan o'tish
+
+            </a>
+
+
+            <div class="avatar">
 
                 G
 
-            {% endif %}
+            </div>
 
-        </div>
+        {% endif %}
 
 
     </header>
 
 
 
-    <!-- ================= CONTENT ================= -->
+    <!-- =========================================
+         CONTENT
+    ========================================= -->
 
     <div class="content">
-
 
         {% block content %}
 
         {% endblock %}
 
-
     </div>
 
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
 
-    <footer>
+    <footer class="footer">
 
 
-        <div class="footer-inner">
+        <div class="footer-content">
 
 
             <div>
 
-                <h4>
+                <div class="footer-brand">
                     EduCenter
-                </h4>
+                </div>
+
 
                 <p>
 
@@ -1160,34 +1599,55 @@
             <div>
 
                 <h4>
-                    Bog‘lanish
+                    Aloqa
                 </h4>
 
 
-                <p>
-                    +998 90 123 45 67
-                </p>
+                <div class="footer-contact">
+
+                    📞 +998 90 000 00 00
+
+                    <br>
+
+                    ✉ info@educenter.uz
+
+                    <br>
+
+                    📍 Toshkent, O'zbekiston
+
+                </div>
+
+            </div>
 
 
-                <p>
-                    info@educenter.uz
-                </p>
+
+            <div>
+
+                <h4>
+                    Ish vaqti
+                </h4>
 
 
-                <p>
-                    Toshkent shahri
-                </p>
+                <div class="footer-contact">
+
+                    Dushanba — Shanba
+
+                    <br>
+
+                    09:00 — 18:00
+
+                </div>
 
             </div>
 
 
         </div>
 
+
     </footer>
 
 
-</div>
-
+</main>
 
 
 </body>

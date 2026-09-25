@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Guruhni ochirish</h1>
+<form method="post">
+    {% csrf_token %}
+    <h3>Siz rostanham {{ group.title }} shu guruhni ochirmoqchimis</h3>
+    <button type="submit">Ha</button>
+</form>
+{% endblock %}

@@ -80,7 +80,7 @@ class Group(TimeStampedModel):
 class GroupStudent(TimeStampedModel):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='memberships')
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, related_name='memberships')
-    joined_at = models.DateField()
+    joined_at = models.DateField(auto_now_add=True)
     left_at = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
 

@@ -1,127 +1,516 @@
+
 {% extends 'base.html' %}
 
 {% block title %}Ro‘yxatdan o‘tish - EduCenter{% endblock %}
 
-{% block hero %}{% endblock %}
-{% block features %}{% endblock %}
 
-{% block extra_css %}
+{% block content %}
+
 <style>
-    .auth-form p {
-        margin-bottom: 1rem;
+
+    /* =========================================
+       REGISTER PAGE
+    ========================================= */
+
+    .register-page {
+        min-height: 650px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 30px 20px;
     }
+
+
+    .register-card {
+
+        width: 100%;
+
+        max-width: 560px;
+
+        background: white;
+
+        border: 1px solid var(--line);
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 15px 40px
+            rgba(18, 33, 63, .08);
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .register-header {
+
+        background: var(--navy);
+
+        color: white;
+
+        text-align: center;
+
+        padding: 32px 25px;
+    }
+
+
+    .register-icon {
+
+        width: 65px;
+
+        height: 65px;
+
+        margin: 0 auto 15px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background: var(--gold);
+
+        border-radius: 14px;
+
+        font-size: 30px;
+
+        box-shadow:
+            0 8px 20px
+            rgba(216, 154, 62, .25);
+    }
+
+
+    .register-header h1 {
+
+        margin: 0 0 7px;
+
+        font-size: 25px;
+
+        font-weight: 800;
+    }
+
+
+    .register-header p {
+
+        margin: 0;
+
+        color: rgba(255,255,255,.65);
+
+        font-size: 13px;
+    }
+
+
+    /* =========================================
+       FORM
+    ========================================= */
+
+    .register-body {
+
+        padding: 32px;
+    }
+
+
+    .auth-form p {
+
+        margin: 0 0 18px;
+    }
+
 
     .auth-form label {
+
         display: block;
-        font-weight: 600;
-        margin-bottom: 6px;
+
+        color: var(--navy);
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        margin-bottom: 7px;
     }
+
 
     .auth-form input,
     .auth-form select,
     .auth-form textarea {
+
         width: 100%;
-        padding: 10px 14px;
-        border: 1px solid #ced4da;
+
+        min-height: 45px;
+
+        padding: 10px 13px;
+
+        background: #fff;
+
+        color: var(--ink);
+
+        border: 1px solid var(--line);
+
         border-radius: 8px;
-        font-size: 16px;
+
+        outline: none;
+
+        font-family: inherit;
+
+        font-size: 13px;
+
+        transition: .2s;
     }
+
+
+    .auth-form textarea {
+
+        min-height: 100px;
+
+        resize: vertical;
+    }
+
+
+    .auth-form input:hover,
+    .auth-form select:hover,
+    .auth-form textarea:hover {
+
+        border-color: #cfcac0;
+    }
+
 
     .auth-form input:focus,
     .auth-form select:focus,
     .auth-form textarea:focus {
-        outline: none;
-        border-color: #0d6efd;
-        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+
+        border-color: var(--gold);
+
+        box-shadow:
+            0 0 0 3px
+            rgba(216,154,62,.12);
     }
+
+
+    /* =========================================
+       HELP TEXT
+    ========================================= */
+
+    .auth-form .helptext {
+
+        display: block;
+
+        margin-top: 6px;
+
+        color: var(--ink-soft);
+
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    .auth-form ul.helptext {
+
+        padding-left: 17px;
+    }
+
+
+    /* =========================================
+       ERRORS
+    ========================================= */
 
     .auth-form ul.errorlist {
-        color: #dc3545;
-        font-size: 14px;
+
         list-style: none;
+
         padding: 0;
-        margin: 4px 0 0 0;
+
+        margin: 6px 0 0;
+
+        color: var(--red);
+
+        font-size: 11px;
+
+        line-height: 1.5;
     }
+
+
+    .register-error {
+
+        background: #FBE9E6;
+
+        border: 1px solid #f0c9c2;
+
+        color: var(--red);
+
+        padding: 12px 14px;
+
+        border-radius: 8px;
+
+        margin-bottom: 20px;
+
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+
+
+    /* =========================================
+       BUTTON
+    ========================================= */
+
+    .register-button {
+
+        width: 100%;
+
+        border: none;
+
+        background: var(--navy);
+
+        color: white;
+
+        padding: 13px 20px;
+
+        border-radius: 8px;
+
+        font-family: inherit;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: .2s;
+
+        margin-top: 5px;
+    }
+
+
+    .register-button:hover {
+
+        background: var(--navy-soft);
+
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 7px 18px
+            rgba(18,33,63,.15);
+    }
+
+
+    .register-button:active {
+
+        transform: translateY(0);
+    }
+
+
+    /* =========================================
+       BOTTOM
+    ========================================= */
+
+    .register-divider {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        margin: 25px 0 20px;
+
+        color: var(--ink-soft);
+
+        font-size: 11px;
+    }
+
+
+    .register-divider::before,
+    .register-divider::after {
+
+        content: "";
+
+        height: 1px;
+
+        flex: 1;
+
+        background: var(--line);
+    }
+
+
+    .login-text {
+
+        text-align: center;
+
+        color: var(--ink-soft);
+
+        font-size: 12px;
+
+        margin: 0;
+    }
+
+
+    .login-text a {
+
+        color: var(--gold);
+
+        font-weight: 800;
+
+        margin-left: 4px;
+
+        transition: .2s;
+    }
+
+
+    .login-text a:hover {
+
+        color: #b77b25;
+
+        text-decoration: underline;
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 600px) {
+
+        .register-page {
+
+            padding: 15px 5px;
+
+            min-height: 550px;
+        }
+
+
+        .register-card {
+
+            border-radius: 10px;
+        }
+
+
+        .register-header {
+
+            padding: 25px 18px;
+        }
+
+
+        .register-header h1 {
+
+            font-size: 22px;
+        }
+
+
+        .register-body {
+
+            padding: 22px 18px;
+        }
+
+    }
+
 </style>
-{% endblock %}
-
-{% block content %}
-
-<section class="py-5">
-
-    <div class="container">
-
-        <div class="row justify-content-center">
-
-            <div class="col-lg-6 col-md-8">
-
-                <div class="feature-card">
-
-                    <div class="text-center mb-4">
-
-                        <i class="bi bi-mortarboard-fill text-primary"
-                           style="font-size: 45px;"></i>
-
-                        <h3 class="fw-bold mt-3">
-                            Ro‘yxatdan o‘tish
-                        </h3>
-
-                        <p class="text-secondary">
-                            EduCenter oilasiga qo‘shiling
-                        </p>
-
-                    </div>
 
 
-                    <!-- UMUMIY XATOLAR -->
+<section class="register-page">
 
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {% for error in form.non_field_errors %}
-                                <div>{{ error }}</div>
-                            {% endfor %}
+
+    <div class="register-card">
+
+
+        <!-- HEADER -->
+
+        <div class="register-header">
+
+            <div class="register-icon">
+                🎓
+            </div>
+
+            <h1>
+                Ro‘yxatdan o‘tish
+            </h1>
+
+            <p>
+                EduCenter oilasiga qo‘shiling
+            </p>
+
+        </div>
+
+
+        <!-- BODY -->
+
+        <div class="register-body">
+
+
+            <!-- UMUMIY XATOLAR -->
+
+            {% if form.non_field_errors %}
+
+                <div class="register-error">
+
+                    {% for error in form.non_field_errors %}
+
+                        <div>
+                            {{ error }}
                         </div>
-                    {% endif %}
 
-
-                    <form method="POST" class="auth-form">
-
-                        {% csrf_token %}
-
-                        {{ form.as_p }}
-
-                        <button type="submit"
-                                class="btn btn-primary btn-lg w-100 mt-2">
-
-                            Ro‘yxatdan o‘tish
-                            <i class="bi bi-arrow-right"></i>
-
-                        </button>
-
-                    </form>
-
-
-                    <hr class="my-4">
-
-
-                    <p class="text-center text-secondary mb-0">
-
-                        Hisobingiz bormi?
-                        <a href="{% url 'login' %}"
-                           class="text-primary fw-semibold text-decoration-none">
-                            Kirish
-                        </a>
-
-                    </p>
+                    {% endfor %}
 
                 </div>
 
+            {% endif %}
+
+
+            <!-- FORM -->
+
+            <form method="POST"
+                  class="auth-form">
+
+                {% csrf_token %}
+
+
+                {{ form.as_p }}
+
+
+                <button type="submit"
+                        class="register-button">
+
+                    Ro‘yxatdan o‘tish
+                    →
+                    
+                </button>
+
+            </form>
+
+
+            <!-- DIVIDER -->
+
+            <div class="register-divider">
+                yoki
             </div>
+
+
+            <!-- LOGIN -->
+
+            <p class="login-text">
+
+                Hisobingiz bormi?
+
+                <a href="{% url 'login' %}">
+                    Kirish
+                </a>
+
+            </p>
+
 
         </div>
 
     </div>
 
+
 </section>
 
 {% endblock %}
+
